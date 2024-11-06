@@ -1,9 +1,10 @@
+import Effect from "./Pages/Effect"
 import Sample from "./Pages/Sample"
 
 function App(){
   return (
     <>
-  <Sample/>
+  <Effect/>
     </>
   )
 }
