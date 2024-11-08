@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import axios from 'axios'
-import {styled} from 'styled-components'
+import { styled } from 'styled-components'
+import { Link } from "react-router-dom"
 
-const Main=styled.div`
+const Main = styled.div`
     width: 100%;
     min-height:100vh;
     background-color: lightblue;
@@ -12,50 +13,44 @@ const Main=styled.div`
     flex-wrap: wrap;
 `
 
-const Sub=styled.div`
+const Sub = styled.div`
 
     background-color: lightgray;
     margin: 15px;
     border-radius: 14px;
 
 `
-const Title=styled.h3`
+const Title = styled.h3`
     text-align: center;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 `
 
-function Effect(){
+function Effect() {
+    const [state,setState]=useState([])
 
 
-    const [apiData,setApidata]=useState([])
-
-    async function display(){
-        const responseData=await axios.get('https://www.themealdb.com/api/json/v1/1/categories.php')  
-        console.log(responseData.data.categories);
-        setApidata(responseData.data.categories)
-     
+    useEffect(function(){
+        async function  display() {
+        const responseDta=await axios.get('https://www.themealdb.com/api/json/v1/1/categories.php') 
+        console.log("final answer",responseDta.data.categories);
+      setState(responseDta.data.categories)
     }
-
-    useEffect(()=>{
-     
-  display()
-      
-    },[])
-
-
     
-  console.log("api data",apiData);
-  
+    display()
+},[])
 
+
+    return (
+<Main>
+{state.map((li)=>{
     return(
-        <Main>
-        {apiData.map((li)=>(
-            <Sub>
-          <Title>{li.strCategory}</Title>
-          <img src={li.strCategoryThumb} alt="" />
-          </Sub>
-        ))}
-
+      <Link to={`/detailpage/${li.strCategory}`}> <Sub>
+<img src={li.strCategoryThumb} alt="" />
+<Title>{li.strCategory}</Title>
+        </Sub>
+        </Link> 
+        )
+})}
 </Main>
     )
 }
