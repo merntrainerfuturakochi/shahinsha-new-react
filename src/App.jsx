@@ -1,18 +1,24 @@
 import {createBrowserRouter,RouterProvider} from "react-router-dom"
-import Detailpage from "./Pages/Detailpage"
-import Effect from "./Pages/Effect"
+import Sample from "./Pages/Sample"
+import Hello from "./Pages/Hello"
+import Hai from "./Pages/Hai"
 
 
-function App(){
+function App(){  
+
 
   const abc=createBrowserRouter([
     {
       path:"/",
-      element:<Effect/>
+      element:<Sample/>
     },
     {
-      path:"/detailpage/:name",
-      element:<Detailpage/>
+      path:"/hello",
+      element:<Hello/>
+    },
+    {
+      path:"/hai",
+      element:<Hai/>
     }
   ])
 
