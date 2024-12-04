@@ -1,35 +1,28 @@
-import { createContext, useReducer } from "react"
+import {createContext, useReducer} from 'react'
 
-export const UserContext=createContext()
+export const Userreducer=createContext()
 
-export const Storepage=({children})=>{
+export const FilestorePage=({children})=>{
 
-    const initialValue={
-        userInfo:null
-    }
+    const initialValue=null
 
     function display(state,action){
-        console.log("action values...............",action);
-        switch(action.type){
-            case "success":
-                return {userInfo:action.finalData}
-        }
+
+        console.log("action values in store page",action);
+        return state=action
+        
 
     }
 
-    const[state,dispatch]=useReducer(display,initialValue)
-
-    console.log("final answer ?",state.userInfo);
+const [state,dispatch]=useReducer(display,initialValue)
+    console.log("final answer",state);
     
-
     return(
-<>
-<UserContext.Provider value={{dispatch,finalAnswer:state.userInfo}}>
-
+        <>
+<Userreducer.Provider value={{dispatch,state}}>
 {children}
-</UserContext.Provider>
-
-</>
-
+</Userreducer.Provider>
+        </>
     )
 }
+

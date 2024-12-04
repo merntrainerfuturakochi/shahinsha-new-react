@@ -2,10 +2,10 @@ import {createBrowserRouter,RouterProvider} from "react-router-dom"
 import Sample from "./Pages/Sample"
 import Hello from "./Pages/Hello"
 import Hai from "./Pages/Hai"
-
+import {FilestorePage} from './Pages/Stattemanagement'
 
 function App(){  
-
+  localStorage.setItem("AfsalDatas","Mernstack Developer")
 
   const abc=createBrowserRouter([
     {
