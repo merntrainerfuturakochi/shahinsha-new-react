@@ -1,10 +1,10 @@
-import {createContext, useReducer} from 'react'
+import {createContext, useEffect, useReducer} from 'react'
 
 export const Userreducer=createContext()
 
 export const FilestorePage=({children})=>{
 
-    const initialValue=null
+    const initialValue=JSON.parse(localStorage.getItem('Farseen store page')) || null
 
     function display(state,action){
 
@@ -16,6 +16,10 @@ export const FilestorePage=({children})=>{
 
 const [state,dispatch]=useReducer(display,initialValue)
     console.log("final answer",state);
+
+    useEffect(()=>{
+localStorage.setItem('Farseen store page',JSON.stringify(state))
+    },[state])
     
     return(
         <>

@@ -2,10 +2,11 @@ import {createBrowserRouter,RouterProvider} from "react-router-dom"
 import Sample from "./Pages/Sample"
 import Hello from "./Pages/Hello"
 import Hai from "./Pages/Hai"
-import {FilestorePage} from './Pages/Stattemanagement'
+import { useState } from "react"
+import axios from "axios"
+
 
 function App(){  
-  localStorage.setItem("AfsalDatas","Mernstack Developer")
 
   const abc=createBrowserRouter([
     {
@@ -13,13 +14,14 @@ function App(){
       element:<Sample/>
     },
     {
+      path:"/hai",
+      element:<Hai/>
+    },
+    {
       path:"/hello",
       element:<Hello/>
     },
-    {
-      path:"/hai",
-      element:<Hai/>
-    }
+  
   ])
 
   return (

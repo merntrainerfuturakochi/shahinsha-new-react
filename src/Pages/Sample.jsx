@@ -16,6 +16,7 @@ const Sample = () => {
     try{
       const responseData=await axios.get('https://jsonplaceholder.typicode.com/users')
       console.log(responseData.data);
+
       dispatch(responseData.data)
       setState(responseData.data)
        }catch(err){
@@ -24,10 +25,6 @@ const Sample = () => {
         }
   }
 
-useEffect(()=>{
-display()
- 
-},[])
 
 
 
@@ -45,7 +42,9 @@ return (
 <Link to={'/hello'}>Connect to hello page</Link>
 <br></br>
 <br></br>
-<Link to={'/hai'}>Connect to hai page</Link>
+<Link to={'/hai'}>Connect to hai page</Link>|
+
+<button onClick={display}>Api fetch</button>
 </>
 
   )

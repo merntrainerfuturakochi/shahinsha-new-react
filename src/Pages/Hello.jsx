@@ -1,12 +1,22 @@
 import React, { useContext } from 'react'
+import { Userreducer } from './Stattemanagement'
 
 
 function Hello() {
+const {state,dispatch}=useContext(Userreducer)
 
+function removedatas(){
+  dispatch(null)
+}
  return (
     <div>
-  
-<h1>Hello page</h1>
+  {state?.map((li)=>(
+    <>
+    <h3>{li.name}</h3>
+    </>
+  ))}
+
+  <button onClick={removedatas}>Remove datas</button>
     </div>
   )
 }
