@@ -1,33 +1,17 @@
-import {createBrowserRouter,RouterProvider} from "react-router-dom"
-import Sample from "./Pages/Sample"
-import Hello from "./Pages/Hello"
-import Hai from "./Pages/Hai"
-import { useState } from "react"
-import axios from "axios"
-
+import {BrowserRouter,Route,Routes} from 'react-router'
+import Detailpage from "./Pages/Detailpage"
+import Home from "./Pages/Home"
+import Single from "./Pages/Single"
 
 function App(){  
-
-  const abc=createBrowserRouter([
-    {
-      path:"/",
-      element:<Sample/>
-    },
-    {
-      path:"/hai",
-      element:<Hai/>
-    },
-    {
-      path:"/hello",
-      element:<Hello/>
-    },
-  
-  ])
-
   return (
-    <>
-<RouterProvider router={abc}></RouterProvider>
-    </>
+    <BrowserRouter>
+<Routes>
+  <Route path='/' element={<Home/>}/>
+  <Route path='/abc/:foodname' element={<Single/>}/>
+  <Route path='/xyz/:id' element={<Detailpage/>}/>
+</Routes>
+</BrowserRouter>
   )
 }
 
