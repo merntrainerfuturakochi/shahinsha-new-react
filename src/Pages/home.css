@@ -10,9 +10,11 @@
 }
 .sub{
     width: 300px;
-    height: auto;
-    border: 1px solid black;
-    background-color: red;
-    margin: 25px;
-    border-radius: 50%;
+    height: 300px;
+    overflow: scroll;
+}
+.image{
+    object-fit: cover;
+    width:250px;
+    height: 250px;
 }

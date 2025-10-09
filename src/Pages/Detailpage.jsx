@@ -1,39 +1,43 @@
-import axios from 'axios';
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 
-function Detailpage() {
 
-  const [state,setState]=useState()
+function Detailpage() {  
+  const {id}=useParams()
+  const navigate=useNavigate()
 
-  const a=useParams()
+  setTimeout(()=>{
+navigate('/')
+  },5000)
 
-  console.log(a.id);
+  const [state,setState]=useState([])
 
- async function display(){
-  const res=await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${a.id}`)
-  console.log("-------------------",res.data.meals);
-  setState(res.data.meals)
+  async function apiFetching(params) {
+    var res=await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+    console.log("id valuess.",res.data.meals);
+    setState(res.data.meals)
+    
   }
 
   useEffect(()=>{
-  display()
+  apiFetching()
   },[])
 
 
 
-  
+
+
   return (
     <div>
-      {state?.map((li)=>(
-        <>
-        <h3>Area ={li.strArea}</h3>
-        <h3>category ={li.strCategory}</h3>
-        <h3>name ={li.strMeal}</h3>
-        <img src={li.strMealThumb} alt="" />
-<a href={li.strSource}>Moredetails</a>
-        </>
-      ))}
+{state?.map((li)=>(
+  <div>
+  <h3>{li.strArea}</h3>
+  <h1>{li.strCategory}</h1>
+  <img width={"250px"} height={"250px"} src={li.strMealThumb} alt="" />
+  <p>{li.strInstructions}</p>
+  </div>
+))}
     </div>
   )
 }

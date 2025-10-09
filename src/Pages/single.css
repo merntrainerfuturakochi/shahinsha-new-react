@@ -6,12 +6,13 @@
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
+    overflow: scroll;
 }
 .second{
     width: 300px;
     height: auto;
     border: 1px solid black;
 }
-img{
+.picture{
     width: 100%;
 }
