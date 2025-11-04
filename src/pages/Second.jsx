@@ -1,15 +1,13 @@
-import React, { useContext } from 'react'
-import { Appcontext } from '../App'
-
+import React from 'react'
+import { useSelector } from 'react-redux'
 
 function Second() {
-
-
-  let b=useContext(Appcontext)
+   const a=useSelector((state)=>state.shahinsha.shahishaData)
   return (
     <div>
-      <h1>Second page {b.name}</h1>
-      <h1>{b.age}</h1>
+     {a?.map((li)=>(
+        <h1>{li.name}</h1>
+     ))} 
     </div>
   )
 }

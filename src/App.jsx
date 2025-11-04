@@ -1,28 +1,18 @@
 import {BrowserRouter,Route,Routes} from 'react-router'
 import First from './pages/First'
 import Second from './pages/Second'
-import Third from './pages/Third'
-import { createContext } from 'react'
+import Form from './pages/Form'
 
-export let Appcontext=createContext()
 
 function App(){ 
   
-  let a={
-    name:"shahinsha",
-    age:23,
-    place:"thrissur"
-  }
-
   return (
     <BrowserRouter>
-    <Appcontext.Provider value={a}>
 <Routes>
 <Route path='/' element={<First/>}/>
 <Route path='/second' element={<Second/>}/>
-<Route path='/third' element={<Third/>}/>
+<Route path='/form' element={<Form/>}/>
 </Routes>
-</Appcontext.Provider>
 </BrowserRouter>
   )
 }
